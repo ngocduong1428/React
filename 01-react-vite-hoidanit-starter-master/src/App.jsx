@@ -1,40 +1,21 @@
-import './component/todo/todo.css'
-import './component/todo/todo_new'
-import TodoNew from './component/todo/todo_new'
-import TodoData from './component/todo/todo_data'
-import logo from "./assets/react.svg"
-import { useState } from 'react'
+
+import Header from './layout/header'
+import Footer from './layout/footer'
+import { Outlet } from 'react-router-dom'
+
+
 const App = () => {
-  const [todo, setTodo] = useState([
-  ])
 
-
-  const NewTodo = (name) => {
-    const newtodo = {
-      id: todo.length + 1,
-      name: name
-    }
-    setTodo([...todo, newtodo])
-  }
 
   return (
-    <div className="todo-container">
-      <div className="todo-title">Todo List</div>
-      <TodoNew
-        NewTodo={NewTodo} />
-      {todo.length > 0 ?
-        <TodoData
-          todoList={todo}
-          setTodo={setTodo}
-        />
-        :
-        <div className='todo-image'>
-          <img src={logo} className='logo' />
-        </div>
-      }
+    <>
+      <Header />
+      <Outlet />
+      <Footer />
 
 
-    </div>
+
+    </>
   )
 }
 
